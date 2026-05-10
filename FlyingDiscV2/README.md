@@ -98,7 +98,11 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 
 | パラメータ | デフォルト | 説明 |
 |-----------|-----------|------|
-| Throw Average Time | 0.07 s | 投げ直前の速度・スピンを平均するタイムウィンドウ |
+| Throw Mode | `Average` | 速度・スピンの計算方式。`Average`（区間平均）か `PeakCluster`（ピーク速度クラスター平均）を選択。フレームレートが不安定な環境では `PeakCluster` が有効 |
+| Throw Average Time | 0.07 s | 投げ直前の速度・スピンを探すタイムウィンドウ。`PeakCluster` モードでは 0.15 s 程度を推奨 |
+| Throw Peak Cluster Half | 1 | `PeakCluster` 専用。ピーク速度フレームを中心に前後いくつのフレームを平均に含めるか（1 → 計3フレーム） |
+| Throw Min Frame Dt | 0.004 s | `PeakCluster` 専用。速度計算に使うフレーム間隔の下限。これより短いフレームは偽スパイクとして除外 |
+| Throw Max Frame Dt | 0.10 s | `PeakCluster` 専用。速度計算に使うフレーム間隔の上限。これより長いフレームはスタッターとして除外 |
 | Throw Speed Scale | 1.9 | 計算した投げ速度に掛けるスケール（飛距離の調整） |
 | Angular Velocity Scale | 1.9 | 計算した角速度に掛けるスケール（スピン量の調整） |
 | Min Throw Speed | 0.3 m/s | 投げ速度の下限。スピンも下限以下のとき不発になる |
@@ -133,5 +137,5 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 → 速度・スピンが両方とも閾値（`Min Throw Speed` / `Min Throw Spin`）を下回っています。より素早く腕を振るか、デスクトップモードではチャージ時間を長くしてください。
 
 **🔻 投げの挙動がフレームレートによって安定しない**  
-→ `Throw Average Time` で指定した時間内に取得できるサンプル数がフレームレートに依存するため、低フレームレート環境（30fps 前後）では平均に使えるサンプルが少なくなり、投げ速度・スピンの計算が不安定になることがあります。  
-→ `Throw Average Time` を大きくする（例: `0.07` → `0.15` 〜 `0.20`）と、同じフレームレートでもサンプル数が増えて安定します。ただし、値が大きすぎると「直前の動き」ではなく「腕を振り始めた頃の速度」まで平均に含まれるため、投げのレスポンスが鈍くなります。ワールドの想定環境に合わせて調整してください。
+→ `Throw Mode` を `PeakCluster` に変更し、`Throw Average Time` を `0.15` 程度に広げるのが推奨の対策です。`PeakCluster` モードはウィンドウ内で最も速いフレーム群だけを使うため、フレームレートが低い環境でもスタッターやスパイクの影響を受けにくくなります。  
+→ `Average` モードのまま使う場合は `Throw Average Time` を大きくするとサンプル数が増えて安定しますが、値が大きすぎると「腕を振り始めた頃の速度」まで平均に含まれてレスポンスが鈍くなります。
