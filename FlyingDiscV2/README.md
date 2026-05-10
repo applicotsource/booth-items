@@ -17,7 +17,7 @@ UdonSharp を使った物理ベースの飛行シミュレーションを提供�
 
 ### 1. プレハブをシーンに配置する
 
-`Assets/Applicotsource/FlyingDisc/Prefabs` 内の FlyingDisc または FlyingRing の prefab をシーンに配置してください。
+`Assets/Applicotsource/FlyingDisc` 内の FlyingDisc または FlyingRing の prefab をシーンに配置してください。
 
 ### 2. Ground Objects を設定する（必須）
 
