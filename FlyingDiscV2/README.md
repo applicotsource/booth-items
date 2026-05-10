@@ -103,6 +103,7 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 | Angular Velocity Scale | 1.9 | 計算した角速度に掛けるスケール（スピン量の調整） |
 | Min Throw Speed | 0.3 m/s | 投げ速度の下限。スピンも下限以下のとき不発になる |
 | Min Throw Spin | 1.7 rad/s | 投げスピンの下限。速度も下限以下のとき不発になる |
+| Symmetric Disc | false | 表裏対称なリング型ディスク用。投げた瞬間に裏向き（法線が下向き）だった場合、物理計算を表向きとして扱う |
 
 ### 👁️ Visual
 
