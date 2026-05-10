@@ -1,11 +1,11 @@
-# Applicotsource Flying Disc System — 使用方法
+# 🥏 Applicotsource Flying Disc System — 使用方法
 
 VRChat 向けのフライングディスク（フリスビー）アセットです。  
 UdonSharp を使った物理ベースの飛行シミュレーションを提供します。
 
 ---
 
-## 必要環境
+## 🖥️ 必要環境
 
 - VRChat Creator Companion (VCC)
 - UdonSharp
@@ -13,7 +13,7 @@ UdonSharp を使った物理ベースの飛行シミュレーションを提供�
 
 ---
 
-## セットアップ手順
+## ⚙️ セットアップ手順
 
 ### 1. プレハブをシーンに配置する
 
@@ -21,7 +21,7 @@ UdonSharp を使った物理ベースの飛行シミュレーションを提供�
 
 ### 2. Ground Objects を設定する（必須）
 
-**ここだけは必ず設定してください。** 未設定の場合、ディスクが地面を貫通して落下し続けます。
+**⚠️ ここだけは必ず設定してください。** 未設定の場合、ディスクが地面を貫通して落下し続けます。
 
 FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects` に、着地判定の対象にしたい **コライダーを持つ GameObject** を登録します。
 
@@ -29,7 +29,7 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 
 ---
 
-## 操作方法
+## 🕹️ 操作方法
 
 ### VR
 | 操作 | 内容 |
@@ -50,18 +50,18 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 
 ---
 
-## Inspector パラメータ一覧
+## 📋 Inspector パラメータ一覧
 
 設定が必要な場合のみ変更してください。デフォルト値で十分動作します。
 
-### Ground Collision ★必須
+### 🌍 Ground Collision ★必須
 
 | パラメータ | デフォルト | 説明 |
 |-----------|-----------|------|
 | **Ground Objects** | *(空)* | 着地判定を行うコライダーを持つ GameObject。**必ず設定してください。** |
 | Disk Radius | 0.2 m | 着地判定 SphereCast の半径 |
 
-### Marker & Auto-reset
+### 📍 Marker & Auto-reset
 
 | パラメータ | デフォルト | 説明 |
 |-----------|-----------|------|
@@ -69,14 +69,14 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 | Marker Height Offset | 0.1 m | 着地マーカーの表示高さオフセット |
 | Auto Reset Time | 20 s | 飛行中・着地後、この秒数が経過すると初期位置に自動リセット |
 
-### Grip
+### ✋ Grip
 
 | パラメータ | デフォルト | 説明 |
 |-----------|-----------|------|
 | Right Grip | *(なし)* | VR 右手でピックアップしたときのグリップ基準 Transform |
 | Left Grip | *(なし)* | VR 左手でピックアップしたときのグリップ基準 Transform |
 
-### Physics
+### 🔭 Physics
 
 | パラメータ | デフォルト | 説明 |
 |-----------|-----------|------|
@@ -87,14 +87,14 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 | Angular Damping | 0.10 | スピン減衰率（1秒あたりの割合）。大きいほどスピンが早く失われる |
 | Reference Spin Rate | 12 rad/s | 揚力が最大になる基準スピン量 |
 
-### Alignment
+### 🎯 Alignment
 
 | パラメータ | デフォルト | 説明 |
 |-----------|-----------|------|
 | Auto Align Speed | 1.0 | スピンが弱いときにディスク法線を上向きに戻す速さ |
 | Auto Align Spin Boost | 1.0 | 自動安定化をスピンで抑制するスケール |
 
-### Throw
+### 💨 Throw
 
 | パラメータ | デフォルト | 説明 |
 |-----------|-----------|------|
@@ -104,13 +104,13 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 | Min Throw Speed | 0.3 m/s | 投げ速度の下限。スピンも下限以下のとき不発になる |
 | Min Throw Spin | 1.7 rad/s | 投げスピンの下限。速度も下限以下のとき不発になる |
 
-### Visual
+### 👁️ Visual
 
 | パラメータ | デフォルト | 説明 |
 |-----------|-----------|------|
 | Disable Visual Rotation | false | チェックするとディスクの回転アニメーションを無効化（物理挙動には影響しない） |
 
-### Desktop Mode
+### 🖱️ Desktop Mode
 
 | パラメータ | デフォルト | 説明 |
 |-----------|-----------|------|
@@ -123,10 +123,10 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 
 ---
 
-## よくある問題
+## ❓ よくある問題
 
-**ディスクが地面を貫通する**  
+**🔻 ディスクが地面を貫通する**  
 → `Ground Objects` が未設定、またはコライダーを持たない GameObject を登録しています。
 
-**投げても飛ばない（不発になる）**  
+**🔻 投げても飛ばない（不発になる）**  
 → 速度・スピンが両方とも閾値（`Min Throw Speed` / `Min Throw Spin`）を下回っています。より素早く腕を振るか、デスクトップモードではチャージ時間を長くしてください。
