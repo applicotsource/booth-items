@@ -8,7 +8,7 @@
 | スクリプト | 用途 |
 |---|---|
 | `PickupDescription.cs` | 各アイテムにアタッチ。Pickup/Drop イベントを UI マネージャーに通知 |
-| `PickupDescriptionUI.cs` | シーンに 1 つ配置。Canvas をプレイヤー頭部に追従させて表示制御 |
+| `PickupDescriptionUI.cs` | シーンに 1 つ配置。VR では Canvas をプレイヤー頭部に追従、デスクトップ/モバイルでは画面左上に固定して表示制御 |
 
 ---
 
@@ -60,10 +60,17 @@ UI (空の GameObject)
 | Follow Distance | `0.8` | 視点からの距離 (m) |
 | Horizontal Offset | `0.22` | 水平オフセット (m、正=右) |
 | Vertical Offset | `-0.20` | 垂直オフセット (m、正=上) |
+| Pin Flat Screen To Top Left | `true` | デスクトップ/モバイル時に UI を画面左上へ固定 |
+| Flat Viewport Margin X | `0.04` | フラット表示時の画面左端からの余白。`0` が左端、`1` が右端 |
+| Flat Viewport Margin Y | `0.06` | フラット表示時の画面上端からの余白。`0` が上端、`1` が下端 |
 | Fade Speed | `5` | フェードの速さ (大きいほど速い) |
+| Scale With Screen Camera | `true` | デスクトップ/モバイル時だけ画面描画サイズに合わせて UI を拡縮 |
+| Reference Pixel Height | `1080` | この描画高さ (px) をスケール 1 の基準にする |
+| Min Screen Scale | `0.75` | フラット表示時の最小スケール倍率 |
+| Max Screen Scale | `1.35` | フラット表示時の最大スケール倍率 |
 
-位置はプレイヤー頭部 (`TrackingData.Head`) を基準に毎フレーム更新されます。  
-デスクトップ・VR・モバイル共通で動作します。
+VR ではプレイヤー頭部 (`TrackingData.Head`) を基準に毎フレーム追従します。  
+デスクトップ/モバイルでは `VRCCameraSettings.ScreenCamera` の FOV と画面アスペクト比を使い、画面左上の余白位置に固定されます。
 
 ---
 
