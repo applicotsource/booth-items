@@ -98,7 +98,7 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 
 | パラメータ | デフォルト | 説明 |
 |-----------|-----------|------|
-| Throw Mode | `Average` | 速度・スピンの計算方式。`Average`（区間平均）か `PeakCluster`（ピーク速度クラスター平均）を選択。フレームレートが不安定な環境では `PeakCluster` が有効 |
+| Throw Mode | `PeakCluster` | 速度・スピンの計算方式。`PeakCluster`（ピーク速度クラスター平均・推奨）/ `Average`（区間平均）/ `Regression`（2次回帰、開発中）から選択 |
 | Throw Average Time | 0.07 s | 投げ直前の速度・スピンを探すタイムウィンドウ。`PeakCluster` モードでは 0.15 s 程度を推奨 |
 | Throw Peak Cluster Half | 1 | `PeakCluster` 専用。ピーク速度フレームを中心に前後いくつのフレームを平均に含めるか（1 → 計3フレーム） |
 | Throw Min Frame Dt | 0.004 s | `PeakCluster` 専用。速度計算に使うフレーム間隔の下限。これより短いフレームは偽スパイクとして除外 |
@@ -137,5 +137,5 @@ FlyingDiscBody を選択し、 Inspector の `Ground Collision > Ground Objects`
 → 速度・スピンが両方とも閾値（`Min Throw Speed` / `Min Throw Spin`）を下回っています。より素早く腕を振るか、デスクトップモードではチャージ時間を長くしてください。
 
 **🔻 投げの挙動がフレームレートによって安定しない**  
-→ `Throw Mode` を `PeakCluster` に変更し、`Throw Average Time` を `0.15` 程度に広げるのが推奨の対策です。`PeakCluster` モードはウィンドウ内で最も速いフレーム群だけを使うため、フレームレートが低い環境でもスタッターやスパイクの影響を受けにくくなります。  
-→ `Average` モードのまま使う場合は `Throw Average Time` を大きくするとサンプル数が増えて安定しますが、値が大きすぎると「腕を振り始めた頃の速度」まで平均に含まれてレスポンスが鈍くなります。
+→ デフォルトの `Throw Mode = PeakCluster` がフレームレートのブレに強い方式です。`Throw Average Time` を `0.15` 程度に広げるとより安定します。`PeakCluster` モードはウィンドウ内で最も速いフレーム群だけを使うため、フレームレートが低い環境でもスタッターやスパイクの影響を受けにくくなります。  
+→ `Average` モードを使う場合は `Throw Average Time` を大きくするとサンプル数が増えて安定しますが、値が大きすぎると「腕を振り始めた頃の速度」まで平均に含まれてレスポンスが鈍くなります。
